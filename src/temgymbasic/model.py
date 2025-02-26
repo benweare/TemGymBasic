@@ -28,7 +28,7 @@ class Model():
             Choose the type of beam:
                     -'point' beam creates a set of rays that start from a single point and 
                      spread out like a cone.
-                    -'paralell' beam creates a set of rays that start from the same position, but 
+                    -'parallel' beam creates a set of rays that start from the same position, but 
                     each have the same angle.
                     - 'axial' creates a beam which is only visible on the x and y axis.
                     - 'x_axial' creates a beam which is only visible on the x-axis. This is only used 
@@ -40,7 +40,7 @@ class Model():
         beam_tilt_y : int, optional
             Set the tilt of the beam in the y direction, by default 0
         beam_radius : float, optional
-            Set the width of the beam - only matters if "paralell" beam type is selected
+            Set the width of the beam - only matters if "parallel" beam type is selected
         detector_size : float, optional
             Set the size of the detector, by default 0.5
         detector_pixels : int, optional
@@ -181,7 +181,7 @@ class Model():
         
         self.r[:, 4, :] = np.ones(self.num_rays)
 
-        if self.beam_type == 'paralell':
+        if self.beam_type == 'parallel':
             self.r, self.spot_indices = circular_beam(self.r, self.beam_radius)
         elif self.beam_type == 'point':
             self.r, self.spot_indices = point_beam(self.r, self.gun_beam_semi_angle)
@@ -285,8 +285,8 @@ class Model():
 
         if self.gui.checkBoxAxial.isChecked():
             self.beam_type = 'axial'
-        if self.gui.checkBoxParalell.isChecked():
-            self.beam_type = 'paralell'
+        if self.gui.checkBoxparallel.isChecked():
+            self.beam_type = ''
         if self.gui.checkBoxPoint.isChecked():
             self.beam_type = 'point'
             
